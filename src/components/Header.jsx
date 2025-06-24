@@ -13,7 +13,7 @@ function Header() {
     <Navbar expand="lg" fixed='top' className="bg-body-tertiary">
       <Container className='d-flex justify-content-between align-items-center'>
         <Navbar.Brand ><Link to='/' className='nav-link fw-bold fs-3'>Alishan</Link> </Navbar.Brand>
-             <Search />
+            <div> <Search /> </div>
         <Navbar.Collapse id="basic-navbar-nav "  >
           <Nav className="ms-auto">
             <Nav.Item>
