@@ -13,7 +13,7 @@ const Layout = () => {
             <Header/>
             <Routes>
                 <Route path='/' element={<Home/>} />
-                <Route path='/product' element={<Product/>} />
+                <Route path='/product/:prodId' element={<Product/>} />
             </Routes>
 
         </div>

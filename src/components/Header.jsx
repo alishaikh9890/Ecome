@@ -13,7 +13,11 @@ function Header() {
     <Navbar expand="lg" fixed='top' className="bg-body-tertiary">
       <Container className='d-flex justify-content-between align-items-center'>
         <Navbar.Brand ><Link to='/' className='nav-link fw-bold fs-3'>Alishan</Link> </Navbar.Brand>
-        {   /* <div> <Search /> </div> */ }
+       <div> <Search /> </div> 
+       <div className='d-flex align-items-center'>
+           <Navbar.Toggle className='p-1 fs-6' aria-controls="basic-navbar-nav" />
+           <UserProfile/>
+       </div>
         <Navbar.Collapse id="basic-navbar-nav "  >
           <Nav className="ms-auto">
             <Nav.Item>
@@ -38,11 +42,6 @@ function Header() {
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
-        <div>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <UserProfile/>
-           
-        </div>
       </Container>
     </Navbar>
   );

@@ -5,7 +5,6 @@ import { authObj } from '../firebase/auth';
 import { authActions } from '../features/authSlice';
 
 
-
 function UserProfile() {
 
     const userAuth = useSelector((state) => state.auth.auth)
@@ -35,7 +34,7 @@ function UserProfile() {
       : userAuth.username ?
          <b className='rounded-circle me-2' style={{width:"30px", height:"30px"}} >{userAuth.username[0].toUpperCase()}</b>
         :
-         <img  src=""  className='rounded-circle me-2' style={{width:"30px", height:"30px"}} />
+         <img  src=''  className='rounded-circle me-2' style={{width:"30px", height:"30px"}} />
       } 
       </Dropdown.Toggle>
 
