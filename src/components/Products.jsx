@@ -11,7 +11,7 @@ const products = useSelector((state) => state.product.products)
 
     return (
         <Container>
-            <Row className='g-3'>
+            <Row className='g-lg-3 g-2'>
                 {products?.map((ele) => (
                         <Col key={ele.id} lg={3} md={4} sm={6} xs={6}>
                             <ProductCard ele={ele} />

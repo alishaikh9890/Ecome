@@ -32,6 +32,11 @@ const productSlice = createSlice({
         nextPage:(state, action)=>{
             state.page++;
             state.skip += 8
+        },
+
+        prevPage:(state, action)=>{
+            state.page--;
+            state.skip -= 8
         }
     }
 })

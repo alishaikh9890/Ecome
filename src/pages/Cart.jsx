@@ -10,34 +10,35 @@ function Cart() {
     console.log(cart)
 
   return (
+
          <Container>
-                {cart?.map((ele) => (
-                       <Card>
-                               <Row>
-                                 <Col md="4">
-                                   <Card.Img className="img-thumbnail" variant="top" src={ele.thumbnail} />
-                                 </Col>
-                                 <Col md="8">
-                                   <Card.Body>
-                                     <Card.Title>{ele.title}</Card.Title>
-                       
-                                     <div className="d-flex gap-3">
-                                       <span className="py-1 px-2 rounded-3 bg-light bg-gradient">{ele.price}</span>
-                                       <span className="py-1 px-2 rounded-3 bg-light bg-gradient">⭐️ {ele.rating}</span>
-                                     </div>
-                       
-                                     <Card.Text>
-                                       
-                                     </Card.Text>
-                                     <div className='d-flex gap-3'>
-                                        <Link to={`/product${ele.id}`}><Button variant="warning" size='sm'>Add to Card</Button></Link>
-                                        <QntBtns/>
-                                    </div>
-                                   </Card.Body>
-                                 </Col>
-                               </Row>
-                             </Card>
-                    ))}
+          {cart && cart.map((ele) => (
+                <Card className='p-1 mt-2'>
+                  <Row>
+                    <Col xs="4">
+                      <Card.Img className="img-thumbnail" variant="top" src={ele.thumbnail} />
+                    </Col>
+                    <Col xs="8">
+                      <Card.Body className='p-2'>
+                        <Card.Subtitle>{ele.title}</Card.Subtitle>
+          
+                        <div className="d-flex gap-3">
+                          <span className="py-1 px-2 rounded-3 bg-light bg-gradient">{ele.price}</span>
+                          <span className="py-1 px-2 rounded-3 bg-light bg-gradient">⭐️ {ele.rating}</span>
+                        </div>
+          
+                        <Card.Text>
+                          
+                        </Card.Text>
+                        <div className='d-flex gap-3'>
+                          <Link to={`/product${ele.id}`}><Button variant="warning" size='sm'>Add to Card</Button></Link>
+                          <QntBtns ele={ele}/>
+                      </div>
+                      </Card.Body>
+                    </Col>
+                  </Row>
+                </Card>
+              ))}
         </Container>
   )
 }

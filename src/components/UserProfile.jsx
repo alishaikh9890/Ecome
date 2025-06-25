@@ -26,25 +26,37 @@ function UserProfile() {
 
 
   return (
-    <Dropdown>
-      <Dropdown.Toggle className='rounded-pill p-1' variant="outlined-light" id="dropdown-basic">
+    <Dropdown drop='down'>
+      <Dropdown.Toggle caret={false} className='btn btn-sm btn-outline-secondary p-0 px-2' variant="outlined-secondary" size='sm' id="dropdown-basic" >
       {
         userAuth.photo ?
          <img  src={userAuth.photo}  className='rounded-circle me-2 img-thumbnail' style={{width:"30px", height:"30px"}} />
       : userAuth.username ?
          <b className='rounded-circle me-2' style={{width:"30px", height:"30px"}} >{userAuth.username[0].toUpperCase()}</b>
         :
-         <img  src=''  className='rounded-circle me-2' style={{width:"30px", height:"30px"}} />
+        <i class="bi bi-person-circle fs-5" ></i>
       } 
       </Dropdown.Toggle>
 
-      <Dropdown.Menu className='end-0'>
+      <Dropdown.Menu className='top-100 end-0' >
         <Dropdown.Item >
-            {userAuth.username && <b>{userAuth.username}</b>}
+            {userAuth.username && userAuth.username}
             </Dropdown.Item>
         <Dropdown.Item >
-            {userAuth.email && <b>{userAuth.email}</b>}
-            </Dropdown.Item>
+            {userAuth.email && userAuth.email}
+          </Dropdown.Item>
+        <Dropdown.Item >
+            <i class="bi bi-gear"></i>
+           <span className='small text-secondary ms-2'>Settings</span> 
+          </Dropdown.Item>
+        <Dropdown.Item >
+            <i class="bi bi-bell"></i>
+           <span className='small text-secondary ms-2'>Notifications</span> 
+          </Dropdown.Item>
+        <Dropdown.Item >
+            <i class="bi bi-heart"></i>
+           <span className='small text-secondary ms-2'>Wishlist</span> 
+          </Dropdown.Item>
         <Dropdown.Item >
             {
                 !userAuth.email ? <Popup /> :  <button onClick={handleLogout} className="btn btn-sm btn-danger">Logout</button>

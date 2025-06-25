@@ -11,10 +11,10 @@ function ProductCard({ele}) {
 
 
   return (
-    <Card className='h-100' >
-        <Card.Img variant="top" src={ele.thumbnail} />
-        <Card.Body>
-            <Card.Title>{ele.title}</Card.Title>
+    <Card className='h-100 p-1' >
+        <Card.Img className='img-thumbnail' variant="top" src={ele.thumbnail} />
+        <Card.Body className='px-2'>
+            <Card.Subtitle>{ele.title}</Card.Subtitle>
             <Card.Text>
                 {ele.price}
             </Card.Text>
@@ -22,8 +22,8 @@ function ProductCard({ele}) {
                 <Link to={`product/${ele.id}`}>
                     <Button variant="primary" size="sm">More</Button>
                 </Link>
-                <Button onClick={() => dispatch(cartActions.addToCard(ele)) } variant="warning" size="sm">Add</Button>
-                 <QntBtns/>    
+               
+                 <QntBtns ele={ele}/>    
             </div>
             </Card.Body>
     </Card>

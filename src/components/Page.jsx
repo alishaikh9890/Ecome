@@ -11,7 +11,7 @@ const page = useSelector((state)=> state.product.page)
 
     return (
         <Pagination className="justify-content-center my-3">
-             <Pagination.Item>Prev</Pagination.Item>
+             <Pagination.Item disabled={page==1} onClick={() => dispatch(productActions.prevPage())}>Prev</Pagination.Item>
              <Pagination.Item>{page}</Pagination.Item>
              <Pagination.Item onClick={()=> dispatch(productActions.nextPage()) }>Next</Pagination.Item>
         </Pagination>

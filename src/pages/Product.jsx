@@ -30,8 +30,7 @@ const Product = () => {
               <Card.Text>
                 {prod.description}
               </Card.Text>
-              <Button variant="warning">Add to Card</Button>
-              <QntBtns/>
+              <QntBtns ele={prod}/>
             </Card.Body>
           </Col>
         </Row>

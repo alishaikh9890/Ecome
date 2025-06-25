@@ -12,7 +12,7 @@ const Layout = () => {
     return (
         <div>
             <Header/>
-            <div className='mt-5 pt-4'>
+            <div className='mt-5 pt-5'>
                 <Routes >
                     <Route path='/' element={<Home/>} />
                     <Route path='/product/:prodId' element={<Product/>} />
