@@ -5,16 +5,20 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Product from './Product';
 import Header from '../components/Header';
+import Cart from './Cart';
 
 const Layout = () => {
 
     return (
         <div>
             <Header/>
-            <Routes>
-                <Route path='/' element={<Home/>} />
-                <Route path='/product/:prodId' element={<Product/>} />
-            </Routes>
+            <div className='mt-5 pt-4'>
+                <Routes >
+                    <Route path='/' element={<Home/>} />
+                    <Route path='/product/:prodId' element={<Product/>} />
+                    <Route path='/cart' element={<Cart/>} />
+                </Routes>
+            </div>
 
         </div>
     );

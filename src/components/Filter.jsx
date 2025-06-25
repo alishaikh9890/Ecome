@@ -9,7 +9,7 @@ const Filter = () => {
     const dispatch = useDispatch()
 
     return (
-      <div className='container overflow-x-auto mt-5'>
+      <div className='container overflow-x-auto mb-3'>
           <div className='d-flex gap-3 align-items-center w-auto'>
             {
                 categories.map((ele)=><Button size="sm" style={{whiteSpace: "nowrap"}} key={ele.slug} onClick={() => dispatch(productActions.setCategory(ele.slug))} variant='secondary'>{ele.name}</Button>)

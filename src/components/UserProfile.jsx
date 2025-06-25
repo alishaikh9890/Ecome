@@ -30,7 +30,7 @@ function UserProfile() {
       <Dropdown.Toggle className='rounded-pill p-1' variant="outlined-light" id="dropdown-basic">
       {
         userAuth.photo ?
-         <img  src={userAuth.photo}  className='rounded-circle me-2' style={{width:"30px", height:"30px"}} />
+         <img  src={userAuth.photo}  className='rounded-circle me-2 img-thumbnail' style={{width:"30px", height:"30px"}} />
       : userAuth.username ?
          <b className='rounded-circle me-2' style={{width:"30px", height:"30px"}} >{userAuth.username[0].toUpperCase()}</b>
         :

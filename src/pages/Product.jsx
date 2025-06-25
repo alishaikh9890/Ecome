@@ -3,6 +3,7 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
+import QntBtns from "../components/QntBtns";
 
 const Product = () => {
     const {prodId} = useParams()
@@ -10,11 +11,12 @@ const Product = () => {
     let prod = products.find((ele) => ele.id == prodId)
 
   return (
-    <Container className="mt-5 pt-5">
+    <Container className="">
+    {prod && 
       <Card>
         <Row>
           <Col>
-            <Card.Img className="img-thumbnail" variant="top" src={prod.images[0]} />
+            <Card.Img className="img-thumbnail" variant="top" src={prod.thumbnail} />
           </Col>
           <Col>
             <Card.Body>
@@ -29,15 +31,15 @@ const Product = () => {
                 {prod.description}
               </Card.Text>
               <Button variant="warning">Add to Card</Button>
+              <QntBtns/>
             </Card.Body>
           </Col>
         </Row>
       </Card>
-
-      <div>
-      { prod.reviews.map((rev) => <ReviewCard {...rev} /> )}
-      </div>
-
+    }
+    <div>
+    {prod && prod.reviews.map((rev) => <ReviewCard key={rev.reviewerName} {...rev} /> )}
+    </div>
     </Container>
     
   );
