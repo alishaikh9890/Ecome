@@ -12,7 +12,7 @@ function UserProfile() {
 
   function handleLogout(){
     authObj.logout()
-    .then((res)=>{
+    .then(()=>{
         dispatch(authActions.logout())
     })
     .catch((err)=>{
@@ -27,14 +27,14 @@ function UserProfile() {
 
   return (
     <Dropdown drop='down'>
-      <Dropdown.Toggle caret={false} className='btn btn-sm btn-outline-secondary p-0 px-2' variant="outlined-secondary" size='sm' id="dropdown-basic" >
+      <Dropdown.Toggle caret = "false" className='btn btn-sm btn-outline-secondary p-0 px-2' variant="outlined-secondary" size='sm' id="dropdown-basic" >
       {
         userAuth.photo ?
          <img  src={userAuth.photo}  className='rounded-circle me-2 img-thumbnail' style={{width:"30px", height:"30px"}} />
       : userAuth.username ?
          <b className='rounded-circle me-2' style={{width:"30px", height:"30px"}} >{userAuth.username[0].toUpperCase()}</b>
         :
-        <i class="bi bi-person-circle fs-5" ></i>
+        <i className="bi bi-person-circle fs-5" ></i>
       } 
       </Dropdown.Toggle>
 
@@ -46,15 +46,15 @@ function UserProfile() {
             {userAuth.email && userAuth.email}
           </Dropdown.Item>
         <Dropdown.Item >
-            <i class="bi bi-gear"></i>
+            <i className="bi bi-gear"></i>
            <span className='small text-secondary ms-2'>Settings</span> 
           </Dropdown.Item>
         <Dropdown.Item >
-            <i class="bi bi-bell"></i>
+            <i className="bi bi-bell"></i>
            <span className='small text-secondary ms-2'>Notifications</span> 
           </Dropdown.Item>
         <Dropdown.Item >
-            <i class="bi bi-heart"></i>
+            <i className="bi bi-heart"></i>
            <span className='small text-secondary ms-2'>Wishlist</span> 
           </Dropdown.Item>
         <Dropdown.Item >

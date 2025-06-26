@@ -22,7 +22,12 @@ const productSlice = createSlice({
         },
 
         setCategory: (state, action) => {
-            state.catFilter = action.payload
+            if(state.catFilter == action.payload)
+            {
+                state.catFilter = ""
+            }else{
+                state.catFilter = action.payload
+            }
         },
 
         setSearch : (state, action) => {

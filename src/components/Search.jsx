@@ -15,7 +15,9 @@ const Search = () => {
     return (
         <div className='d-flex align-items-center position-relative'>
              <Form.Control onChange={(e) => setInput(e.target.value)} />
-             <Button onClick={ () => dispatch(productActions.setSearch(input))} variant='outline-secondary' size="sm" className='position-absolute bg-opacity-25' style={{right:"4px"}}>🔍</Button>
+             <Button onClick={ () => dispatch(productActions.setSearch(input))} variant='outline-secondary' size="sm" className='position-absolute bg-opacity-25' style={{right:"4px"}}>
+                <i className='bi bi-search'></i>
+             </Button>
         </div>
     );
 }

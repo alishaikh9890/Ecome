@@ -20,10 +20,10 @@ function Cart() {
                     </Col>
                     <Col xs="8">
                       <Card.Body className='p-2'>
-                        <Card.Subtitle>{ele.title}</Card.Subtitle>
+                        <Card.Subtitle className='small text-secondary mb-2'>{ele.title}</Card.Subtitle>
           
                         <div className="d-flex gap-3">
-                          <span className="py-1 px-2 rounded-3 bg-light bg-gradient">{ele.price}</span>
+                          <span className="py-1 px-2 rounded-3 bg-light bb-2g-gradient">₹ {ele.price} /-</span>
                           <span className="py-1 px-2 rounded-3 bg-light bg-gradient">⭐️ {ele.rating}</span>
                         </div>
           
@@ -31,7 +31,7 @@ function Cart() {
                           
                         </Card.Text>
                         <div className='d-flex gap-3'>
-                          <Link to={`/product${ele.id}`}><Button variant="warning" size='sm'>Add to Card</Button></Link>
+                          <Link to={`/product${ele.id}`}><Button variant="info" size='sm'>More</Button></Link>
                           <QntBtns ele={ele}/>
                       </div>
                       </Card.Body>

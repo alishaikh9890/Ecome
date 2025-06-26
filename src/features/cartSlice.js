@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 let initialState ={
     cart:[],
     cartLength:0,
-    total:0
+    total:0,
+    wishList:[]
 }
 
 const cartSlice = createSlice({
@@ -26,6 +27,14 @@ const cartSlice = createSlice({
                state.cart = state.cart.filter((ele)=> ele.id != action.payload.id)
             }else{
                 state.cart.map((ele) => ele.id == action.payload.id && ele.count--)
+            }
+        },
+        addToWishList: (state, action)=>{
+            if(state.wishList.some((el) => el.id == action.payload.id)){
+                state.wishList = state.wishList.filter((el) => el.id != action.payload.id)
+            }
+            else{
+                state.wishList.push(action.payload)
             }
         }
     }

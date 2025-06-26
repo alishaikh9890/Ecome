@@ -31,7 +31,7 @@ export const authObj = {
 ,
     curUser: function(dispatch, authLogin){
         onAuthStateChanged(this.auth, (user) =>{
-            // console.log("auth: ", user)
+            if(user)
             dispatch(authLogin({
                 photo:user.photoURL,
                 username:user.displayName,

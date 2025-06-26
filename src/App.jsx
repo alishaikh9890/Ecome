@@ -25,7 +25,6 @@ function App() {
       let filter = catFilter ? `/category/${catFilter}` : ""
       let searching = search ?  `/search?q=${search}&` : "?"
 
-    fetchApi(filter, skip)
          fetchApi(filter, skip, searching)
          .then((res)=>{
           dispatch(productActions.allProduct(res))
@@ -40,8 +39,6 @@ function App() {
       .then((res)=>{
           dispatch(productActions.allCategories(res))
          })
-
-
          authObj.curUser(dispatch, authActions.login)
   }, [])
 

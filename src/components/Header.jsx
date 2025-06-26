@@ -58,10 +58,10 @@ function Header() {
           <UserProfile />
           <Link
             to="/cart"
-            className="btn btn-sm btn-danger py-0 d-flex align-items-center"
+            className="py-0 btn btn-sm btn-outline-secondary position-relative"
           >
-            <i class="bi bi-cart3 text-white fs-5"></i>
-            <Badge bg="light" className="text-dark">
+            <i className="bi bi-cart3  fs-5"></i>
+            <Badge bg="danger" className="position-absolute rounded-circle p-1 " style={{left:"13px", top:"0px"}}>
               {cartLength}
             </Badge>
           </Link>
