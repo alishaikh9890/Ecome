@@ -1,11 +1,10 @@
-
-
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Product from './Product';
 import Header from '../components/Header';
 import Cart from './Cart';
+import WishList from './WishList';
 
 const Layout = () => {
 
@@ -17,6 +16,7 @@ const Layout = () => {
                     <Route path='/' element={<Home/>} />
                     <Route path='/product/:prodId' element={<Product/>} />
                     <Route path='/cart' element={<Cart/>} />
+                    <Route path='/wishlist' element={<WishList/>} />
                 </Routes>
             </div>
 

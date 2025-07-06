@@ -25,14 +25,11 @@ export const authObj = {
         }
     },
 
-    logout: async () => {
-
-    }
-,
     curUser: function(dispatch, authLogin){
         onAuthStateChanged(this.auth, (user) =>{
             if(user)
             dispatch(authLogin({
+                uid:user.uid,
                 photo:user.photoURL,
                 username:user.displayName,
                 email: user.email
@@ -43,7 +40,7 @@ export const authObj = {
     logout:async function(){
         try {
             return await signOut(this.auth);
-            console.log("logout successfull...1")
+            console.log("logout successfull...!")
         } catch (error) {
             console.log(error)
         }
