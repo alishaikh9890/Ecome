@@ -40,7 +40,6 @@ function App() {
     const upCart = async () => {
       try {
         const res = await dataStoreObj.getCart(auth.uid);
-        console.log(res.exists());
         if (res.exists()) {
           dispatch(cartActions.replaceCart(res.data()));
         }
@@ -49,7 +48,6 @@ function App() {
       }
     };
     if (auth.uid) {
-      console.log(auth.uid);
       upCart();
     }
   }, [auth]);
@@ -62,7 +60,9 @@ function App() {
 
     const updateCart = async () => {
       try {
-        await dataStoreObj.setCart(auth.uid, cart);
+        if(auth.uid){
+          await dataStoreObj.setCart(auth.uid, cart);
+        }
       } catch (err) {
         console.error("Cart update error:", err);
       }

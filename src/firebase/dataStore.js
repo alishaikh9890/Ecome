@@ -7,7 +7,7 @@ export const dataStoreObj = {
 
     setCart: async function(uid, cart){
         try {       
-           await setDoc(doc(this.db, "cart", uid),cart)
+           await setDoc(doc(this.db, "cart", uid), cart)
         } catch (error) {
             console.log(error)
         }
