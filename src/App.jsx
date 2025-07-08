@@ -12,14 +12,13 @@ import { dataStoreObj } from "./firebase/dataStore";
 import { cartActions } from "./features/cartSlice";
 
 function App() {
-  const hasMounted = useRef(false)
+  const hasMounted = useRef(true);
   const dispatch = useDispatch();
   const skip = useSelector((state) => state.product.skip);
   const catFilter = useSelector((state) => state.product.catFilter);
   const search = useSelector((state) => state.product.search);
   const cart = useSelector((state) => state.cart);
-  const auth = useSelector((state) => state.auth.auth)
-
+  const auth = useSelector((state) => state.auth.auth);
 
   useEffect(() => {
     let filter = catFilter ? `/category/${catFilter}` : "";
@@ -30,59 +29,46 @@ function App() {
     });
   }, [skip, catFilter, search]);
 
-
-
-
   useEffect(() => {
     fetchCategores().then((res) => {
       dispatch(productActions.allCategories(res));
     });
     authObj.curUser(dispatch, authActions.login);
-
   }, []);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     const upCart = async () => {
-    try {
-      const res = await dataStoreObj.getCart(auth.uid);
-      if (res.exists()) {
-        dispatch(cartActions.replaceCart(res.data()));
+      try {
+        const res = await dataStoreObj.getCart(auth.uid);
+        console.log(res.exists());
+        if (res.exists()) {
+          dispatch(cartActions.replaceCart(res.data()));
+        }
+      } catch (err) {
+        console.error("Cart update error:", err);
       }
-    } catch (err) {
-      console.error("Cart update error:", err);
+    };
+    if (auth.uid) {
+      console.log(auth.uid);
+      upCart();
     }
-  };
-  if(auth.uid){
-    console.log(auth.uid)
-    upCart()
-  }
-  }, [auth])
+  }, [auth]);
 
+  useEffect(() => {
+    if (hasMounted.current) {
+      hasMounted.current = false;
+      return; // ⛔ skip on first render
+    }
 
-useEffect(() => {
-  if (!hasMounted.current) {
-    hasMounted.current = true;
-    return; // ⛔ skip on first render
-  }
-  const updateCart = async () => {
-    console.log("value")
-    try {
-      await dataStoreObj.setCart(auth.uid, cart);
-      const res = await dataStoreObj.getCart(auth.uid);
-      if (res.exists()) {
-        console.log("Cart:", res.data());
-        dispatch(cartActions.replaceCart(res.data()));
+    const updateCart = async () => {
+      try {
+        await dataStoreObj.setCart(auth.uid, cart);
+      } catch (err) {
+        console.error("Cart update error:", err);
       }
-    } catch (err) {
-      console.error("Cart update error:", err);
-    }
-  };
-  
+    };
     updateCart();
-  
-}, [cart]);
-
+  }, [cart]);
 
   return (
     <>

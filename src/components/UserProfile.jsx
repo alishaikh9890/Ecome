@@ -24,7 +24,7 @@ function UserProfile() {
     <Dropdown drop="down">
       <Dropdown.Toggle
         caret="false"
-        className="btn btn-sm btn-outline-secondary p-0 px-2"
+        className="btn btn-sm btn-outline-secondary p-0 pe-1"
         variant="outlined-secondary"
         size="sm"
         id="dropdown-basic"
@@ -32,18 +32,18 @@ function UserProfile() {
         {userAuth.photo ? (
           <img
             src={userAuth.photo}
-            className="rounded-circle me-2 img-thumbnail"
+            className="rounded-circle me-0 img-thumbnail"
             style={{ width: "30px", height: "30px" }}
           />
         ) : userAuth.username ? (
           <b
-            className="rounded-circle me-2"
+            className="rounded-circle"
             style={{ width: "30px", height: "30px" }}
           >
             {userAuth.username[0].toUpperCase()}
           </b>
         ) : (
-          <i className="bi bi-person-circle fs-5"></i>
+          <i className="bi bi-person-circle border p-1 rounded-circle fs-5"></i>
         )}
       </Dropdown.Toggle>
 
@@ -58,12 +58,12 @@ function UserProfile() {
           <i className="bi bi-bell"></i>
           <span className="small text-secondary ms-2">Notifications</span>
         </Dropdown.Item>
+        <Dropdown.Item>
         <Link to="/wishlist">
-          <Dropdown.Item>
             <i className="bi bi-heart"></i>
             <span className="small text-secondary ms-2">Wishlist</span>
+            </Link>
           </Dropdown.Item>
-        </Link>
         <Dropdown.Item>
           {!userAuth.email ? (
             <Popup />

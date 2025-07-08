@@ -11,6 +11,7 @@ function WishList() {
   return (
 
          <Container>
+         <h3 className='text-center'>❤️ WishList</h3>
           {wishList && wishList.map((ele) => (
                 <Card className='p-1 mt-2'>
                   <Row>

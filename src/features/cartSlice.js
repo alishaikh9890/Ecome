@@ -12,7 +12,10 @@ const cartSlice = createSlice({
     initialState,
     reducers:{
         replaceCart:(state, action)=>{
-            state = action.payload
+            state.cart = action.payload.cart
+            state.cartLength = action.payload.cartLength
+            state.total = action.payload.total
+            state.wishList = action.payload.wishList
         },
         addToCard: (state, action)=>{
             if(state.cart.some((ele) => ele.id == action.payload.id))

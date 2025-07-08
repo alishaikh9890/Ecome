@@ -13,8 +13,8 @@ function Header() {
 
   return (
     <Navbar expand="lg" fixed="top" className="bg-body-tertiary shadow">
-      <Container className="d-flex justify-content-between align-items-center">
-        <Navbar.Brand className="">
+      <Container className="d-flex justify-content-between align-items-center px-1">
+        <Navbar.Brand className="logo">
           <Link to="/" className="nav-link fw-bold fs-3">
             Alishan
           </Link>{" "}
@@ -50,7 +50,7 @@ function Header() {
           </Nav>
         </Navbar.Collapse> */}
         
-        <div className=" d-flex align-items-center gap-2 ">
+        <div className=" d-flex align-items-center gap-1 ">
          {/*  <Navbar.Toggle
             className="p-1 fs-6"
             aria-controls="basic-navbar-nav"
