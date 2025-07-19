@@ -1,11 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import QntBtns from '../components/QntBtns'
+import { cartActions } from '../features/cartSlice'
 
 function WishList() {
     let wishList = useSelector((state) => state.cart.wishList)
+
+    const dispatch = useDispatch()
 
 
   return (
@@ -32,7 +35,12 @@ function WishList() {
                         </Card.Text>
                         <div className='d-flex gap-3'>
                           <Link to={`/product${ele.id}`}><Button variant="info" size='sm'>More</Button></Link>
-                          <QntBtns ele={ele}/>
+                         {/*  <QntBtns ele={ele}/> */}
+                         <button 
+                         onClick={() => dispatch(cartActions.addToWishList(ele))}
+                         className='btn btn-sm p-0 rounded-circle btn-outline-dark'>
+                          <i class="bi bi-trash fs-6"></i>
+                         </button>
                       </div>
                       </Card.Body>
                     </Col>
