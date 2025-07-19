@@ -35,7 +35,7 @@ function UserProfile() {
           <img
             src={userAuth.photo}
             className="rounded-circle me-0 img-thumbnail"
-            style={{ width: "30px", height: "30px" }}
+            style={{ width: "30px", height: "30px",padding:"2px" }}
           />
         ) : userAuth.username ? (
           <b
@@ -49,7 +49,7 @@ function UserProfile() {
         )}
       </Dropdown.Toggle>
 
-      <Dropdown.Menu className="top-100 end-0">
+      <Dropdown.Menu style={{width:"fit-content"}}>
         <Dropdown.Item>{userAuth.username && userAuth.username}</Dropdown.Item>
         <Dropdown.Item>{userAuth.email && userAuth.email}</Dropdown.Item>
         <Dropdown.Item>
