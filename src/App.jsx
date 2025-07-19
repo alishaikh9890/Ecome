@@ -10,6 +10,7 @@ import { authObj } from "./firebase/auth";
 import { authActions } from "./features/authSlice";
 import { dataStoreObj } from "./firebase/dataStore";
 import { cartActions } from "./features/cartSlice";
+import { toast } from "react-toastify";
 
 function App() {
   const hasMounted = useRef(true);

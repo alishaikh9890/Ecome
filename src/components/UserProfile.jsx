@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authObj } from "../firebase/auth";
 import { authActions } from "../features/authSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function UserProfile() {
   const userAuth = useSelector((state) => state.auth.auth);
@@ -13,6 +14,7 @@ function UserProfile() {
     authObj
       .logout()
       .then(() => {
+        toast.error("User Logged Out...!")
         dispatch(authActions.logout());
       })
       .catch((err) => {

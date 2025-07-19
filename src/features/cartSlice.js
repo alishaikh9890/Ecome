@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 let initialState ={
     cart:[],
@@ -24,6 +25,7 @@ const cartSlice = createSlice({
             }else{
                 state.cartLength++;
                 state.cart.push({...action.payload, count:1})
+                toast.info("Item Added To Cart...!")
             }
         },
         decCount: (state, action) =>{    
@@ -31,6 +33,7 @@ const cartSlice = createSlice({
             {
                 state.cartLength--;
                state.cart = state.cart.filter((ele)=> ele.id != action.payload.id)
+               toast.warning("Item Removed From Cart...!")
             }else{
                 state.cart.map((ele) => ele.id == action.payload.id && ele.count--)
             }

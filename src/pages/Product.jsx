@@ -14,7 +14,7 @@ const Product = () => {
     <Container className="">
     {prod && 
       <Card>
-        <Row>
+        <Row xs="1" md="2">
           <Col>
             <Card.Img className="img-thumbnail" variant="top" src={prod.thumbnail} />
           </Col>

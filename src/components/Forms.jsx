@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 import { authObj } from '../firebase/auth';
+  import { toast } from 'react-toastify';
 
 const Forms = () => {
 
@@ -20,6 +21,7 @@ const Forms = () => {
         authObj.login(authDetails.email, authDetails.password)
         .then((res)=>{
             console.log(res)
+            toast.success("Login successfull...!")
         })
         .catch((err)=>{
             console.log(err)
