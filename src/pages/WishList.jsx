@@ -16,12 +16,12 @@ function WishList() {
          <Container>
          <h3 className='text-center'>❤️ WishList</h3>
           {wishList && wishList.map((ele) => (
-                <Card className='p-1 mt-2'>
+                <Card key={ele.id} className='p-1 mt-2'>
                   <Row>
                     <Col xs="4">
                       <Card.Img className="img-thumbnail" variant="top" src={ele.thumbnail} />
                     </Col>
-                    <Col xs="8">
+                    <Col xs="8" className='ps-0'>
                       <Card.Body className='p-2'>
                         <Card.Subtitle className='small text-secondary mb-2'>{ele.title}</Card.Subtitle>
           
@@ -34,12 +34,12 @@ function WishList() {
                           
                         </Card.Text>
                         <div className='d-flex gap-3'>
-                          <Link to={`/product${ele.id}`}><Button variant="info" size='sm'>More</Button></Link>
+                          <Link to={`/product/${ele.id}`}><Button variant="info" size='sm'>More</Button></Link>
                          {/*  <QntBtns ele={ele}/> */}
-                         <button 
+                         <button style={{width:"30px", height:"30px"}} 
                          onClick={() => dispatch(cartActions.addToWishList(ele))}
-                         className='btn btn-sm p-0 rounded-circle btn-outline-dark'>
-                          <i class="bi bi-trash fs-6"></i>
+                         className='btn p-0 rounded-circle btn-outline-secondary border-0 position-absolute end-0 top-0'>
+                          <i class="bi bi-trash fs-5"></i>
                          </button>
                       </div>
                       </Card.Body>

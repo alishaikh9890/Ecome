@@ -21,7 +21,7 @@ const Forms = () => {
         authObj.login(authDetails.email, authDetails.password)
         .then((res)=>{
             console.log(res)
-            toast.success("Login successfull...!")
+            toast.success("Login successfull...!", {autoClose: 2500})
         })
         .catch((err)=>{
             console.log(err)

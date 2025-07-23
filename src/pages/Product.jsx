@@ -1,18 +1,25 @@
 import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
 import QntBtns from "../components/QntBtns";
+import { useFetchSingleProduct } from "../app/api";
 
 const Product = () => {
     const {prodId} = useParams()
-    const products= useSelector((state) => state.product.products)
-    let prod = products.find((ele) => ele.id == prodId)
+
+    console.log(prodId)
+
+   const {loading, error, prod} = useFetchSingleProduct(prodId)
 
   return (
+    
+      loading ? 
+      <>loading...</>
+      : error ? 
+      <>something went wrong</>
+      :
     <Container className="">
-    {prod && 
       <Card>
         <Row xs="1" md="2">
           <Col>
@@ -35,12 +42,10 @@ const Product = () => {
           </Col>
         </Row>
       </Card>
-    }
-    <div>
-    {prod && prod.reviews.map((rev) => <ReviewCard key={rev.reviewerName} {...rev} /> )}
-    </div>
-    </Container>
-    
+      <div>
+      {prod.reviews && prod.reviews.map((rev) => <ReviewCard key={rev.reviewerName} {...rev} /> )}
+      </div>
+      </Container>
   );
 };
 

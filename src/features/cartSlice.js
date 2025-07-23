@@ -25,7 +25,7 @@ const cartSlice = createSlice({
             }else{
                 state.cartLength++;
                 state.cart.push({...action.payload, count:1})
-                toast.info("Item Added To Cart...!")
+                toast.info("Item Added To Cart...!", {autoClose: 2500})
             }
         },
         decCount: (state, action) =>{    
@@ -33,7 +33,7 @@ const cartSlice = createSlice({
             {
                 state.cartLength--;
                state.cart = state.cart.filter((ele)=> ele.id != action.payload.id)
-               toast.warning("Item Removed From Cart...!")
+               toast.warning("Item Removed From Cart...!", {autoClose: 2500})
             }else{
                 state.cart.map((ele) => ele.id == action.payload.id && ele.count--)
             }
@@ -41,9 +41,11 @@ const cartSlice = createSlice({
         addToWishList: (state, action)=>{
             if(state.wishList.some((el) => el.id == action.payload.id)){
                 state.wishList = state.wishList.filter((el) => el.id != action.payload.id)
+                toast("Removed from WishList...!", {autoClose: 2500})
             }
             else{
                 state.wishList.push(action.payload)
+                toast("Added to WishList...!", {autoClose: 2500})
             }
         }
     }

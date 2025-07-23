@@ -21,6 +21,8 @@ function App() {
   const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth.auth);
 
+
+  
   useEffect(() => {
     let filter = catFilter ? `/category/${catFilter}` : "";
     let searching = search ? `/search?q=${search}&` : "?";
@@ -30,12 +32,16 @@ function App() {
     });
   }, [skip, catFilter, search]);
 
+
+
   useEffect(() => {
     fetchCategores().then((res) => {
       dispatch(productActions.allCategories(res));
     });
     authObj.curUser(dispatch, authActions.login);
   }, []);
+
+
 
   useEffect(() => {
     const upCart = async () => {
@@ -53,12 +59,13 @@ function App() {
     }
   }, [auth]);
 
+
+
   useEffect(() => {
     if (hasMounted.current) {
       hasMounted.current = false;
       return; // ⛔ skip on first render
     }
-
     const updateCart = async () => {
       try {
         if(auth.uid){
@@ -70,6 +77,8 @@ function App() {
     };
     updateCart();
   }, [cart]);
+
+
 
   return (
     <>

@@ -31,7 +31,7 @@ function Cart() {
                           
                         </Card.Text>
                         <div className='d-flex gap-3'>
-                          <Link to={`/product${ele.id}`}><Button variant="info" size='sm'>More</Button></Link>
+                          <Link to={`/product/${ele.id}`}><Button variant="info" size='sm'>More</Button></Link>
                           <QntBtns ele={ele}/>
                       </div>
                       </Card.Body>

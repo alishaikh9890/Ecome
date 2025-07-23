@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 
 
  export const fetchApi = async(filter, skip, searching) => {
@@ -8,6 +9,25 @@
         console.log(error)
       }
     }
+
+export const useFetchSingleProduct = (id) => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState()
+  const [prod, setProd] = useState({})
+
+  useEffect(() =>{
+
+    
+    fetch(`https://dummyjson.com/products/${id}`)
+    .then((res) => res.json())
+    .then((res) => setProd(res))
+    .catch((err) => setError(err))
+    .finally(() => setLoading(false))
+  },[id])
+
+      return {loading, error, prod}
+
+}
 
 
  export const fetchCategores = async() => {

@@ -14,7 +14,7 @@ function UserProfile() {
     authObj
       .logout()
       .then(() => {
-        toast.error("User Logged Out...!")
+        toast.error("User Logged Out...!", {autoClose: 2500})
         dispatch(authActions.logout());
       })
       .catch((err) => {
@@ -45,7 +45,7 @@ function UserProfile() {
             {userAuth.username[0].toUpperCase()}
           </b>
         ) : (
-          <i className="bi bi-person-circle border p-1 rounded-circle fs-5"></i>
+          <i className="bi bi-person-circle rounded-circle fs-5 ms-1" ></i>
         )}
       </Dropdown.Toggle>
 

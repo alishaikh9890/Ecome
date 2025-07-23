@@ -18,4 +18,5 @@ function ReviewCard({rating, comment, date, reviewerName, reviewerEmail}) {
   )
 }
 
+
 export default ReviewCard

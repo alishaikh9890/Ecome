@@ -7,12 +7,10 @@ import { useState } from 'react';
 function Popup(){
       const [show, setShow] = useState(false);
 
-    const handleShow = () => setShow(true);
+  const handleShow = () => setShow(true);
 
   const handleClose = () => setShow(false);
 
-
-  
 
   return (
     <>
