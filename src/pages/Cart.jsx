@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import QntBtns from '../components/QntBtns'
 
 function Cart() {
     let cart = useSelector((state) => state.cart.cart)
+    const navigate = useNavigate()
 
-    console.log(cart)
+  useEffect(()=>{
+    if(cart.length<=0){
+      navigate("/")
+    }
+  }, [cart, navigate])
 
   return (
 
          <Container>
           {cart && cart.map((ele) => (
-                <Card className='p-1 mt-2'>
+                <Card key={ele.id} className='p-1 mt-2'>
                   <Row>
                     <Col xs="4">
                       <Card.Img className="img-thumbnail" variant="top" src={ele.thumbnail} />

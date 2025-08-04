@@ -58,7 +58,7 @@ function Header() {
         aria-controls="basic-navbar-nav"
         /> */}
         <UserProfile />
-        <Link
+       {/*  <Link
         to="/cart"
         className="py-0 btn btn-sm btn-outline-secondary position-relative"
         >
@@ -66,7 +66,7 @@ function Header() {
         <Badge bg="danger" className="position-absolute rounded-circle p-1 " style={{left:"13px", top:"0px"}}>
         {cartLength}
         </Badge>
-        </Link>
+        </Link> */}
         </div>
         </Container>
         </Navbar>

@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../features/cartSlice'
 import Popup from './Popup';
+import { authActions } from '../features/authSlice';
 
 function Wish({ele}) {
   const auth = useSelector((state) => state.auth.auth);
@@ -15,7 +16,7 @@ function Wish({ele}) {
 
   return (
      <i
-        onClick={() => {auth.uid ? dispatch(cartActions.addToWishList(ele)) : <Popup/>}}
+        onClick={() => {auth.uid ? dispatch(cartActions.addToWishList(ele)) : dispatch(authActions.authPopOpen())}}
         className={findWish(ele.id) ? `bi bi-heart-fill position-absolute text-danger` : `bi bi-heart position-absolute text-secondary` }
         onMouseEnter={(e) => e.currentTarget.classList.replace("bi-heart", "bi-heart-fill")}
         onMouseLeave={(e) => !findWish(ele.id) && e.currentTarget.classList.replace("bi-heart-fill", "bi-heart")}

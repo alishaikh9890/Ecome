@@ -1,4 +1,6 @@
 
+import { toast } from "react-toastify"
+import { authActions } from "../features/authSlice"
 import { app } from "./config"
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth"
 
@@ -19,7 +21,6 @@ export const authObj = {
     googleAuth:async function(){
         try {
             return await signInWithPopup(this.auth, this.googleProvider)
-            console.log("login successfull...!")
         } catch (error) {
             console.log(error)
         }
@@ -40,7 +41,6 @@ export const authObj = {
     logout:async function(){
         try {
             return await signOut(this.auth);
-            console.log("logout successfull...!")
         } catch (error) {
             console.log(error)
         }

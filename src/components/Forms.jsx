@@ -4,11 +4,13 @@ import { Form } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 import { authObj } from '../firebase/auth';
   import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../features/authSlice';
 
 const Forms = () => {
 
     const [authDetails, setAuthDetails] = useState({email:"", password:""})
-
+    const dispatch = useDispatch()
    function handleForm(e){
     const {name, value} = e.target;
         setAuthDetails({
@@ -18,9 +20,20 @@ const Forms = () => {
     }
 
    function handleLog(){
-        authObj.login(authDetails.email, authDetails.password)
-        .then((res)=>{
+       let loginPromise = authObj.login(authDetails.email, authDetails.password)
+
+       toast.promise(
+        loginPromise,
+        {
+            pending:'logging in...',
+            success: 'login successfull',
+            error: 'login failed...'
+        }
+       )
+
+        loginPromise.then((res)=>{
             console.log(res)
+             dispatch(authActions.authPopClose())
             toast.success("Login successfull...!", {autoClose: 2500})
         })
         .catch((err)=>{
@@ -32,6 +45,8 @@ const Forms = () => {
         authObj.googleAuth()
         .then((res) => {
             // console.log(res)
+             dispatch(authActions.authPopClose())
+            toast.success("Login successfull...!", {autoClose: 2500})
         })
         .catch((err)=>{
             console.log(err)

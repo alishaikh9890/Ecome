@@ -7,7 +7,9 @@ const authSlice = createSlice({
         username:"",
         email:"",
         photo:""
-    }},
+    },
+    authPop:false
+},
     reducers:{
         login:(state, action)=>{
             state.auth = action.payload
@@ -20,6 +22,14 @@ const authSlice = createSlice({
                 email:"",
                 photo:""
             }
+        }, 
+
+        authPopOpen:(state)=>{
+            state.authPop = true
+        },
+        
+        authPopClose:(state)=>{
+            state.authPop = false
         }
     }
 })

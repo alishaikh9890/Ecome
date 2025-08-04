@@ -39,7 +39,7 @@ function WishList() {
                          <button style={{width:"30px", height:"30px"}} 
                          onClick={() => dispatch(cartActions.addToWishList(ele))}
                          className='btn p-0 rounded-circle btn-outline-secondary border-0 position-absolute end-0 top-0'>
-                          <i class="bi bi-trash fs-5"></i>
+                          <i className="bi bi-trash fs-5"></i>
                          </button>
                       </div>
                       </Card.Body>

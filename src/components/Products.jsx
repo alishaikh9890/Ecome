@@ -9,7 +9,7 @@ const Products = () => {
 
 const products = useSelector((state) => state.product.products)
 
-if(!!!products)
+if(!products)
     return <Container style={{height:"70vh"}} className='border d-flex justify-content-center align-items-center' >
     <Spinners/>
 </Container>

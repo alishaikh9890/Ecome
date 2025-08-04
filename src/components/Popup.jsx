@@ -2,20 +2,21 @@ import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Forms from './Forms';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from '../features/authSlice';
 
 function Popup(){
-      const [show, setShow] = useState(false);
 
-  const handleShow = () => setShow(true);
+  const authPop = useSelector((state)=> state.auth.authPop)
+  const dispatch = useDispatch()
+  const handleShow = () => dispatch(authActions.authPopOpen());
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => dispatch(authActions.authPopClose());
 
 
   return (
     <>
-     <button onClick={handleShow} className="btn btn-sm btn-success">Login</button>
-     <Modal show={show} onHide={handleClose}>
+     <Modal show={authPop} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
